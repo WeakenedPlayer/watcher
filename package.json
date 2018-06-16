@@ -6,7 +6,7 @@
 	"keywords": [
 		"chokidar"
 	],
-	"repository": "",
+	"repository": "https://github.com/WeakenedPlayer/watcher.git",
 	"license": "MIT",
 	"main": "dist/index.js",
 	"types": "dist/index.d.ts",
