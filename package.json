@@ -1,0 +1,29 @@
+{
+	"scope": "@weakenedplayer",
+	"name": "@weakenedplayer/watcher",
+	"version": "0.0.1",
+	"description": "Simple wrapper for chokidar",
+	"keywords": [
+		"chokidar"
+	],
+	"repository": "",
+	"license": "MIT",
+	"main": "dist/index.js",
+	"types": "dist/index.d.ts",
+	"scripts": {
+		"build": "tsc -p tsconfig.json",
+		"test": "tsc -p tsconfig.test.json && node dist-test/index.js",
+		"postinstall": "postinstall-build dist",
+		"beta-release": "npm publish --tag beta --access public",
+		"release": "npm publish --tag latest --access public"
+	},
+	"dependencies": {
+		"postinstall-build": "^5.0.1",
+		"chokidar": "^2.0.3",
+		"rxjs": "^6.0.0"
+	},
+	"devDependencies": {
+		"@types/chokidar": "^1.7.5"
+	},
+	"buildDependencies": {}
+}

@@ -1,0 +1,9 @@
+node_modules
+tmp
+dist
+dist-test
+test
+tsconfig.test.json
+package-lock.json
+.project
+.gitignore
