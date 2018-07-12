@@ -43,7 +43,7 @@ export class Watcher {
     get unlinkDir$(): Observable<string> { return this._unlinkDir$ }
     
     // ------------------------------------------------------------------------
-    constructor( private path: string, private option: WatcherOption = defaultOption ) {
+    constructor( private option: WatcherOption = defaultOption ) {
         // merge all options
         this.option = { ...defaultOption, ...this.option };
 
@@ -54,10 +54,10 @@ export class Watcher {
         this._unlinkDir$ = this.unlinkDirSubject.pipe( share() );
     }
     // ------------------------------------------------------------------------
-    watch(): Promise<void> {
+    watch( path: string ): Promise<void> {
         this.unwatch();
         
-        let watcher = watch( this.path, {
+        let watcher = watch( path, {
             ignoreInitial: true,
             followSymlinks: false,
             persistent: true,

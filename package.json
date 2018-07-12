@@ -1,7 +1,7 @@
 {
 	"scope": "@weakenedplayer",
 	"name": "@weakenedplayer/watcher",
-	"version": "0.0.1",
+	"version": "0.0.2",
 	"description": "Simple wrapper for chokidar",
 	"keywords": [
 		"chokidar"
