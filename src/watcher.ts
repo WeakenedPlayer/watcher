@@ -43,10 +43,7 @@ export class Watcher {
     get unlinkDir$(): Observable<string> { return this._unlinkDir$ }
     
     // ------------------------------------------------------------------------
-    constructor( private option: WatcherOption = defaultOption ) {
-        // merge all options
-        this.option = { ...defaultOption, ...this.option };
-
+    constructor() {
         this._add$ = this.addSubject.pipe( share() );
         this._change$ = this.changeSubject.pipe( share() );
         this._unlink$ = this.unlinkSubject.pipe( share() );
@@ -54,7 +51,9 @@ export class Watcher {
         this._unlinkDir$ = this.unlinkDirSubject.pipe( share() );
     }
     // ------------------------------------------------------------------------
-    watch( path: string ): Promise<void> {
+    watch( path: string, option: WatcherOption = defaultOption ): Promise<void> {
+        // merge all options
+        let mergedOption = { ...defaultOption, ...option };
         this.unwatch();
         
         let watcher = watch( path, {
@@ -62,8 +61,8 @@ export class Watcher {
             followSymlinks: false,
             persistent: true,
             awaitWriteFinish: {
-                stabilityThreshold: this.option.stabilityThreshold,
-                pollInterval: this.option.pollInterval
+                stabilityThreshold: mergedOption.stabilityThreshold,
+                pollInterval: mergedOption.pollInterval
               },
         } );
 
